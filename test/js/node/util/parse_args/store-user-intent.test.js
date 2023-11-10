@@ -1,9 +1,5 @@
-'use strict';
-/* eslint max-len: 0 */
-
-const test = require('tape');
-const { parseArgs } = require('../index.js');
-
+import { test, expect } from "bun:test";
+import { parseArgs } from "node:util";
 
 // Rationale
 //
@@ -16,38 +12,35 @@ const { parseArgs } = require('../index.js');
 // not the configurer, which will ensure the configurer can most accurately respond to the
 // user's intentions.
 
-test('when use string short option used as boolean then result as if boolean', (t) => {
-  const args = ['-o'];
-  const stringOptions = { opt: { short: 'o', type: 'string' } };
-  const booleanOptions = { opt: { short: 'o', type: 'boolean' } };
+test("when use string short option used as boolean then result as if boolean", () => {
+  const args = ["-o"];
+  const stringOptions = { opt: { short: "o", type: "string" } };
+  const booleanOptions = { opt: { short: "o", type: "boolean" } };
 
   const stringConfigResult = parseArgs({ args, options: stringOptions, strict: false });
   const booleanConfigResult = parseArgs({ args, options: booleanOptions, strict: false });
 
-  t.deepEqual(stringConfigResult, booleanConfigResult);
-  t.end();
+  expect(stringConfigResult).toEqual(booleanConfigResult);
 });
 
-test('when use string long option used as boolean then result as if boolean', (t) => {
-  const args = ['--opt'];
-  const stringOptions = { opt: { short: 'o', type: 'string' } };
-  const booleanOptions = { opt: { short: 'o', type: 'boolean' } };
+test("when use string long option used as boolean then result as if boolean", () => {
+  const args = ["--opt"];
+  const stringOptions = { opt: { short: "o", type: "string" } };
+  const booleanOptions = { opt: { short: "o", type: "boolean" } };
 
   const stringConfigResult = parseArgs({ args, options: stringOptions, strict: false });
   const booleanConfigResult = parseArgs({ args, options: booleanOptions, strict: false });
 
-  t.deepEqual(stringConfigResult, booleanConfigResult);
-  t.end();
+  expect(stringConfigResult).toEqual(booleanConfigResult);
 });
 
-test('when use boolean long option used as string then result as if string', (t) => {
-  const args = ['--bool=OOPS'];
-  const stringOptions = { bool: { type: 'string' } };
-  const booleanOptions = { bool: { type: 'boolean' } };
+test("when use boolean long option used as string then result as if string", () => {
+  const args = ["--bool=OOPS"];
+  const stringOptions = { bool: { type: "string" } };
+  const booleanOptions = { bool: { type: "boolean" } };
 
   const stringConfigResult = parseArgs({ args, options: stringOptions, strict: false });
   const booleanConfigResult = parseArgs({ args, options: booleanOptions, strict: false });
 
-  t.deepEqual(booleanConfigResult, stringConfigResult);
-  t.end();
+  expect(booleanConfigResult).toEqual(stringConfigResult);
 });
