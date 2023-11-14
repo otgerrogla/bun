@@ -1,6 +1,5 @@
 import { test, expect } from "bun:test";
-import { parseArgs } from "node:util";
-const isShortOptionAndValue = parseArgs.internal.isShortOptionAndValue;
+const { isShortOptionAndValue } = require("../../../../../src/js/internal/util/parse_args/utils").default;
 
 test("isShortOptionAndValue: when passed lone short option then returns false", () => {
   expect(isShortOptionAndValue("-s", {})).toBeFalse();

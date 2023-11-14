@@ -397,20 +397,8 @@ To specify an option argument starting with a dash use ${example}.`;
       return result;
     };
 
-    exports.parseArgs = Object.assign(parseArgs, {
-      // needed by tests
-      internal: {
-        isLoneLongOption,
-        isLoneShortOption,
-        isLongOptionAndValue,
-        isOptionValue,
-        isOptionLikeValue,
-        isShortOptionAndValue,
-        isShortOptionGroup,
-        findLongOptionForShort,
-      },
-    });
-  },
+    exports.parseArgs = parseArgs;
+  }
 });
 
 export default requireParseArgs();

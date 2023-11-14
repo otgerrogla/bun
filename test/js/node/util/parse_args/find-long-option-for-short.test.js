@@ -1,6 +1,5 @@
 import { test, expect } from "bun:test";
-import { parseArgs } from "node:util";
-const findLongOptionForShort = parseArgs.internal.findLongOptionForShort;
+const { findLongOptionForShort } = require("../../../../../src/js/internal/util/parse_args/utils").default;
 
 test("findLongOptionForShort: when passed empty options then returns short", () => {
   expect(findLongOptionForShort("a", {})).toEqual("a");

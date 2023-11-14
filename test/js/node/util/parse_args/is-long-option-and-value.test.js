@@ -1,6 +1,5 @@
 import { test, expect } from "bun:test";
-import { parseArgs } from "node:util";
-const isLongOptionAndValue = parseArgs.internal.isLongOptionAndValue;
+const { isLongOptionAndValue } = require("../../../../../src/js/internal/util/parse_args/utils").default;
 
 test("isLongOptionAndValue: when passed short option then returns false", () => {
   expect(isLongOptionAndValue("-s")).toBeFalse();

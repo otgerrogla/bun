@@ -1,6 +1,5 @@
 import { test, expect } from "bun:test";
-import { parseArgs } from "node:util";
-const isOptionLikeValue = parseArgs.internal.isOptionLikeValue;
+const { isOptionLikeValue } = require("../../../../../src/js/internal/util/parse_args/utils").default;
 
 // Basically rejecting values starting with a dash, but run through the interesting possibilities.
 
