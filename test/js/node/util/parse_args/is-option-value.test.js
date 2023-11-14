@@ -1,6 +1,6 @@
 import { test, expect } from "bun:test";
 import { parseArgs } from "node:util";
-const isOptionValue = parseArgs.internal.isOptionValue;
+const { isOptionValue } = require("../../../../../src/js/internal/util/parse_args/utils").default;
 
 // Options are greedy so simple behaviour, but run through the interesting possibilities.
 
